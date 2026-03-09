@@ -19,6 +19,12 @@ Verified contract and token addresses for onchain interactions.
 |-------|---------|
 | BOLD (Liquity V2) | `0x6440f144b7e50D6a8439336510312d2F54beB01D` |
 
+### Yearn Vaults (Mainnet)
+
+| Vault | Address |
+|-------|---------|
+| yvUSDC-1 | `0xBe53A109B494E5c9f97b9Cd39Fe969BE68BF6204` |
+
 ### Common Tokens (Mainnet)
 
 | Token | Address |
