@@ -89,6 +89,15 @@ curl -s "https://api.enso.build/api/v1/wallet/balances?chainId=1&eoaAddress=$ADD
 
 Returns array of `{token, amount, chainId, decimals, price, name, symbol}`.
 
+## IMPORTANT: Route Expiry
+
+Route data from the API is only valid for ~30 seconds. Always:
+1. Get the route
+2. Simulate with `cast call`
+3. Send the transaction
+
+All in one shot. Never store a route and use it later — it WILL revert.
+
 ## Bundle API
 
 For multi-step workflows (borrow, claim, CLMM positions) beyond simple route.
