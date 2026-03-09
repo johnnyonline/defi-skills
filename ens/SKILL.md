@@ -101,8 +101,21 @@ Anyone can renew any name. Same pricing as registration.
 cast send $CONTROLLER "renew(string,uint256)" "myname" 31536000 --value $PRICE --rpc-url $RPC --private-key $PK
 ```
 
+## Set Address Record (Forward Resolution)
+
+Registration with `data: []` does NOT set the forward address record. You must set it separately so `name.eth` → `address` works.
+
+```bash
+NAMEHASH=$(cast namehash myname.eth)
+cast send $RESOLVER "setAddr(bytes32,address)" $NAMEHASH $OWNER --rpc-url $RPC --private-key $PK
+```
+
+Alternatively, pass encoded `setAddr` call in the `data` param during registration to do it in one tx.
+
 ## Gotchas
 - Commit-reveal: must wait 60s–24h between commit and register
 - Price is in ETH but denominated in USD — send 5-10% extra
 - Name must be 3+ characters
+- Registration with `data: []` only sets ownership, NOT the address record — call `setAddr` separately or pass it in `data`
+- `reverseRecord: true` sets reverse (address → name) but NOT forward (name → address)
 - After expiry: 90-day grace period, then 21-day dutch auction
