@@ -1,6 +1,6 @@
 # Foundry
 
-Ethereum toolkit for onchain interactions. Docs: https://book.getfoundry.sh
+Ethereum toolkit. Docs: https://book.getfoundry.sh
 
 ## Install
 
@@ -10,16 +10,7 @@ export PATH="$HOME/.foundry/bin:$PATH"
 foundryup
 ```
 
-## Tools
-
-- `cast` — CLI for onchain reads, writes, conversions
-- `forge` — build, test, deploy Solidity contracts
-- `anvil` — local testnet node
-- `chisel` — Solidity REPL
-
-## cast — Common Operations
-
-### Read
+## cast — Read
 
 ```bash
 # ETH balance
@@ -38,7 +29,7 @@ cast block-number --rpc-url $RPC
 cast receipt <tx_hash> --rpc-url $RPC
 ```
 
-### Write
+## cast — Write
 
 ```bash
 # Send ETH
@@ -54,23 +45,20 @@ cast send <token> "approve(address,uint256)" <spender> <amount> --rpc-url $RPC -
 cast send <to> <calldata> --value <wei> --rpc-url $RPC --private-key $PK
 ```
 
-### Conversions
+## cast — Conversions
 
 ```bash
 # ETH to wei
-cast to-wei 1.5    # 1500000000000000000
+cast to-wei 1.5
 
 # Wei to ETH
-cast from-wei 1500000000000000000    # 1.5
+cast from-wei 1500000000000000000
 
 # Hex to decimal
-cast to-dec 0x4c1e57    # 4988503
+cast to-dec 0x4c1e57
 
 # Decimal to hex
 cast to-hex 4988503
-
-# To checksummed address
-cast to-check-sum-address <address>
 
 # ABI encode
 cast abi-encode "transfer(address,uint256)" <to> <amount>
@@ -82,7 +70,7 @@ cast abi-decode "balanceOf(address)(uint256)" <data>
 cast keccak "Transfer(address,address,uint256)"
 ```
 
-### Wallet
+## cast — Wallet
 
 ```bash
 # Generate new keypair
@@ -92,58 +80,21 @@ cast wallet new
 cast wallet address --private-key $PK
 ```
 
-### ENS
+## cast — ENS
 
 ```bash
-# Resolve ENS name
 cast resolve-name vitalik.eth --rpc-url $RPC
-
-# Reverse resolve
 cast lookup-address <address> --rpc-url $RPC
 ```
 
-### Logs & Events
+## cast — Logs
 
 ```bash
-# Get logs by topic
 cast logs --from-block <block> --to-block <block> --address <contract> <topic0> --rpc-url $RPC
-```
-
-## forge — Common Operations
-
-```bash
-# Init new project
-forge init my-project
-
-# Build
-forge build
-
-# Test
-forge test -vvv
-
-# Deploy
-forge create src/Contract.sol:Contract --rpc-url $RPC --private-key $PK
-
-# Verify on Etherscan
-forge verify-contract <address> src/Contract.sol:Contract --etherscan-api-key $KEY --chain mainnet
-```
-
-## anvil — Local Testnet
-
-```bash
-# Start local node
-anvil
-
-# Fork mainnet
-anvil --fork-url $RPC
-
-# Fork at specific block
-anvil --fork-url $RPC --fork-block-number 12345678
 ```
 
 ## Tips
 
-- Always use `--rpc-url` (no default)
 - `cast call` = read (free), `cast send` = write (costs gas)
 - For ERC20 amounts, mind the decimals (USDC = 6, most tokens = 18)
 - Use `cast --help` or `cast <command> --help` for full reference
