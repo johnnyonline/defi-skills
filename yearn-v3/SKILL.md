@@ -54,6 +54,37 @@ vault.redeem(shares, receiver, owner, maxLoss)
 - `getEndorsedVaults(asset)` — all vaults for one asset
 - `vaultInfo(vault)` — asset, version, type, tag
 
+## APR Oracle
+
+Contract: `0x1981AD9F44F2Ea9aDd2dC4AD7D075c102C70aF92` (Mainnet)
+
+Use `getStrategyApr` to get the current unreported APR a strategy is earning.
+
+```bash
+# Get current strategy APR (debtChange = 0 for current state)
+# Returns APR as a uint256 (1e18 = 100%)
+cast call $APR_ORACLE "getStrategyApr(address,int256)(uint256)" $STRATEGY 0 --rpc-url $RPC
+```
+
+**Parameters:**
+- `_strategy` — address of the TokenizedStrategy
+- `_debtChange` — simulated debt change (use `0` for current APR, positive to simulate deposit, negative to simulate withdrawal)
+
+**Return value:**
+- `apr` — annualized rate, scaled to 1e18 (e.g. `50000000000000000` = 5%)
+
+**Example: convert to human-readable**
+```bash
+# Get raw APR
+APR_RAW=$(cast call 0x1981AD9F44F2Ea9aDd2dC4AD7D075c102C70aF92 "getStrategyApr(address,int256)(uint256)" $STRATEGY 0 --rpc-url $RPC)
+
+# Convert to percentage (divide by 1e16)
+echo "scale=2; $APR_RAW / 10^16" | bc
+```
+
+**Use in lender-borrower strategy:**
+Compare this earn rate against the borrow rate from the lending protocol to calculate net APR. See `lender-borrower-strategy/SKILL.md`.
+
 ## Multi-Chain
 
 Contracts use create2, addresses are stable across chains. Active on: Ethereum, Polygon, Base, Arbitrum, Katana.
