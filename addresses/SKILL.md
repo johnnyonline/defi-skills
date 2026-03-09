@@ -24,6 +24,7 @@ Verified contract and token addresses for onchain interactions.
 | Vault | Address |
 |-------|---------|
 | yvUSDC-1 | `0xBe53A109B494E5c9f97b9Cd39Fe969BE68BF6204` |
+| yvUSDS-1 | `0x182863131F9a4630fF9E27830d945B1413e347E8` |
 
 ### Common Tokens (Mainnet)
 
