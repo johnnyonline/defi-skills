@@ -143,6 +143,12 @@ To sign with cast, compute the struct hash and sign with `cast wallet sign --pri
 5. Solvers compete to fill — MEV-protected
 6. Check status / trades
 
+## Caveats
+
+- **Small orders may not fill.** Solvers pay gas to settle, so tiny orders (< ~$50) may not be profitable for solvers to pick up. They can sit open until expiry. For small amounts, a direct DEX swap (Uniswap, Enso) may be more reliable.
+- **feeAmount must be 0** in the API request — the protocol handles fees internally via the sell amount.
+- **Orders expire.** Default `validTo` from quotes is ~30 min. If unfilled by then, WETH/tokens stay in your wallet untouched.
+
 ## Benefits over Direct DEX Swaps
 
 - **MEV protection** — solvers execute, users never exposed on-chain
