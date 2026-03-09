@@ -78,6 +78,17 @@ curl -s -X GET "https://api.enso.build/api/v1/wallet/approve?chainId=1&fromAddre
 
 Returns `tx` object + `spender` address.
 
+## Wallet Balances
+
+Get all tokens held by an address with prices.
+
+```bash
+curl -s "https://api.enso.build/api/v1/wallet/balances?chainId=1&eoaAddress=$ADDRESS" \
+  -H "Authorization: Bearer $ENSO_API_KEY"
+```
+
+Returns array of `{token, amount, chainId, decimals, price, name, symbol}`.
+
 ## Bundle API
 
 For multi-step workflows (borrow, claim, CLMM positions) beyond simple route.
