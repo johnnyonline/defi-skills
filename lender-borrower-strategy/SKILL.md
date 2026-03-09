@@ -19,7 +19,24 @@ Borrow at a low interest rate, deposit borrowed tokens into a higher-yield vault
 └──────────────┘
 ```
 
-Profit = vault earn rate - borrow rate (net APR must be positive).
+## Net APR Calculation
+
+```
+netAPR = collateralYield + LTV × (earnRate - borrowRate)
+```
+
+- `collateralYield` — yield earned on collateral itself (e.g. wstETH staking APR)
+- `LTV` — loan-to-value ratio (e.g. 0.60 for 60%)
+- `earnRate` — vault APR on deposited tokens
+- `borrowRate` — variable borrow APR from lending protocol
+
+**Example:** wstETH collateral (2.4% staking) at 60% LTV, earning 4.57% on USDS, borrowing USDC at 2.83%:
+
+```
+netAPR = 2.4% + 0.60 × (4.57% - 2.83%) = 2.4% + 1.04% = 3.44%
+```
+
+The spread only applies to the borrowed portion (LTV × capital), not the full position. Collateral yield applies to the full capital base.
 
 ## Parameters
 
@@ -86,7 +103,7 @@ Current yield from the vault.
 ### 5. Net APR
 
 ```
-netAPR = earnRate - borrowRate
+netAPR = collateralYield + currentLTV × (earnRate - borrowRate)
 ```
 
 - `> minNetAPR` — position is healthy
