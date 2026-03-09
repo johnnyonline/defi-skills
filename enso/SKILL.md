@@ -10,6 +10,8 @@ Dashboard (API keys): https://developers.enso.build
 
 `Authorization: Bearer $ENSO_API_KEY` header on all requests. Key stored at `/root/.alfred/enso-api-key` (chmod 600).
 
+If key is missing, ask Johnny to create one at https://developers.enso.build and send it over.
+
 Rate limit: 10 RPS (600/min).
 
 ## Router Address
