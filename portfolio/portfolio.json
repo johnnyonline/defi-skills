@@ -1,0 +1,93 @@
+{
+  "wallet": "0x6107f085FdE2A628494E17317b56b533440Bc056",
+  "positions": [
+    {
+      "id": "lender-borrower-1",
+      "strategy": "lender-borrower",
+      "status": "active",
+      "openedAt": "2025-03-09T18:00:00Z",
+      "entries": [
+        {
+          "protocol": "aave-v3",
+          "type": "collateral",
+          "asset": "wstETH",
+          "assetAddress": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+          "entryAmount": "0.008516",
+          "entryPriceUSD": 2350
+        },
+        {
+          "protocol": "aave-v3",
+          "type": "debt",
+          "asset": "USDC",
+          "assetAddress": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+          "entryAmount": "12.0"
+        },
+        {
+          "protocol": "yearn-v3",
+          "type": "deposit",
+          "vault": "yvUSDS-1",
+          "vaultAddress": "0x182863131F9a4630fF9E27830d945B1413e347E8",
+          "shares": "11.003",
+          "entryAmount": "11.998"
+        }
+      ],
+      "params": {
+        "targetLTV": 0.60,
+        "maxLTV": 0.68,
+        "minLTV": 0.52
+      }
+    }
+  ],
+  "txLog": [
+    {
+      "timestamp": "2025-03-09T18:30:00Z",
+      "txHash": "0x58b0ee4f4ed9287e4a231bb5e897b00799479a3ca856068e55e43410e1e247b3",
+      "action": "swap",
+      "protocol": "enso",
+      "asset": "ETH → wstETH",
+      "amount": "0.008516",
+      "gasUsedETH": "0.0008",
+      "positionId": "lender-borrower-1"
+    },
+    {
+      "timestamp": "2025-03-09T19:00:00Z",
+      "txHash": "0x5afce2d8a02cb0e7f72b04c1afb54be1ba2c48f47631e09fdb37d76513a2b65e",
+      "action": "supply",
+      "protocol": "aave-v3",
+      "asset": "wstETH",
+      "amount": "0.008516",
+      "gasUsedETH": "0.0005",
+      "positionId": "lender-borrower-1"
+    },
+    {
+      "timestamp": "2025-03-09T19:30:00Z",
+      "txHash": "0x6c8c063e00e7cb3e98e3e27eb2f09e9aa67479a37f6e6af1cc766b25e38e1bfa",
+      "action": "borrow",
+      "protocol": "aave-v3",
+      "asset": "USDC",
+      "amount": "12.0",
+      "gasUsedETH": "0.0004",
+      "positionId": "lender-borrower-1"
+    },
+    {
+      "timestamp": "2025-03-10T14:00:00Z",
+      "txHash": "0xc6ce2c5e91dc30cba31fa202ca6060fa14be7ef3f3f81a4e131e5a7e1cf012cf",
+      "action": "swap",
+      "protocol": "enso",
+      "asset": "USDC → USDS",
+      "amount": "11.998",
+      "gasUsedETH": "0.0005",
+      "positionId": "lender-borrower-1"
+    },
+    {
+      "timestamp": "2025-03-10T14:15:00Z",
+      "txHash": "0x2e2ad1ec14db85b3a532ab6a96fd727e3edf1b7fef1edeb0691cb5b1c7a1e91c",
+      "action": "deposit",
+      "protocol": "yearn-v3",
+      "asset": "USDS",
+      "amount": "11.998",
+      "gasUsedETH": "0.0004",
+      "positionId": "lender-borrower-1"
+    }
+  ]
+}
