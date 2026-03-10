@@ -68,7 +68,6 @@ Each protocol skill (aave-v3, yearn-v3, etc.) owns its own `scripts/` directory.
       "protocol": "aave-v3",
       "asset": "wstETH",
       "amount": "0.0085",
-      "gasUsedETH": "0.0003",
       "positionId": "lender-borrower-1"
     }
   ]
@@ -81,12 +80,11 @@ Each protocol skill (aave-v3, yearn-v3, etc.) owns its own `scripts/` directory.
 - Current value (USD + ETH)
 - Health metrics (LTV, health factor for lending positions)
 - Expected APR vs actual APR
-- Unrealized PnL (current value - entry value - gas spent)
+- Unrealized PnL (current value - entry value)
 
 ### Portfolio Level
 - Total value (USD + ETH)
 - Weighted average APR
-- Total gas spent
 - Net PnL since inception
 
 ### Snapshots
@@ -97,7 +95,6 @@ Daily JSON snapshots for historical tracking:
   "totalValueUSD": 20.50,
   "totalValueETH": 0.0087,
   "positions": { "lender-borrower-1": { "valueUSD": 20.50 } },
-  "gasSpentETH": "0.0045",
   "netPnlUSD": -0.30
 }
 ```

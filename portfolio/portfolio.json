@@ -32,7 +32,7 @@
         }
       ],
       "params": {
-        "targetLTV": 0.60,
+        "targetLTV": 0.6,
         "maxLTV": 0.68,
         "minLTV": 0.52
       }
@@ -44,9 +44,8 @@
       "txHash": "0x58b0ee4f4ed9287e4a231bb5e897b00799479a3ca856068e55e43410e1e247b3",
       "action": "swap",
       "protocol": "enso",
-      "asset": "ETH → wstETH",
+      "asset": "ETH \u2192 wstETH",
       "amount": "0.008516",
-      "gasUsedETH": "0.0008",
       "positionId": "lender-borrower-1"
     },
     {
@@ -56,7 +55,6 @@
       "protocol": "aave-v3",
       "asset": "wstETH",
       "amount": "0.008516",
-      "gasUsedETH": "0.0005",
       "positionId": "lender-borrower-1"
     },
     {
@@ -66,7 +64,6 @@
       "protocol": "aave-v3",
       "asset": "USDC",
       "amount": "12.0",
-      "gasUsedETH": "0.0004",
       "positionId": "lender-borrower-1"
     },
     {
@@ -74,9 +71,8 @@
       "txHash": "0xc6ce2c5e91dc30cba31fa202ca6060fa14be7ef3f3f81a4e131e5a7e1cf012cf",
       "action": "swap",
       "protocol": "enso",
-      "asset": "USDC → USDS",
+      "asset": "USDC \u2192 USDS",
       "amount": "11.998",
-      "gasUsedETH": "0.0005",
       "positionId": "lender-borrower-1"
     },
     {
@@ -86,7 +82,6 @@
       "protocol": "yearn-v3",
       "asset": "USDS",
       "amount": "11.998",
-      "gasUsedETH": "0.0004",
       "positionId": "lender-borrower-1"
     }
   ]
